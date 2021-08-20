@@ -25,4 +25,6 @@ app.use(function(request, response) {
 });
 
 //Starts the server that listens on port 8080
-http.createServer(app).listen(8080);
+http.createServer(app).listen(8080, function() {
+    console.log('Application started on port %s', 8080); //Displays message to the console 
+});
