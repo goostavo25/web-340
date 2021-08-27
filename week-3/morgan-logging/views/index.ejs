@@ -1,0 +1,66 @@
+<!--
+Title: index.ejs
+Author: W3Schools 
+Modified by: Gustavo Roo Gonzalez
+Date: 22 August 2021
+Description: Exercise to access EJS files and display them on a node server.
+Reference: https://www.w3schools.com/whatis/whatis_bootstrap.asp
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<!--Site Title/Links/Bootstrap-->
+
+<head>
+    <title>BEJS Views Exercise</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <!--Site Header/Main content-->
+
+    <div class="jumbotron text-center">
+        <h1>Exercise 3.2</h1>
+        <p>Morgan Logging</p>
+
+        <!--Section where object values from node js file are displayed-->
+        <strong>Read this message: </strong><span><br><%= message %></span>
+    </div>
+
+
+    <!--Paragraphs Section-->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+
+                <h2>Paragraph I</h2>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div class="col-sm-4">
+
+                <h2>Paragraph II</h2>
+
+                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+            </div>
+            <div class="col-sm-4">
+
+                <h2>Paragraph III</h2>
+
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
