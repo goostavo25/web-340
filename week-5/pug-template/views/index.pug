@@ -1,0 +1,44 @@
+
+//
+  Title: index.ejs
+  Author: W3Schools
+  Modified by: Gustavo Roo Gonzalez
+  Date: 11 September 2021
+  Description: Bootstrap for Exercise 5.3 PUG Templates
+  Reference: https://www.w3schools.com/whatis/whatis_bootstrap.asp
+
+// Site Title/Links/Bootstrap
+head
+  title Exercise 5.3 Pug Templates
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css')
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js')
+  script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js')
+
+// Site Header/Main content
+.jumbotron.text-center
+  h1 Exercise 5.3
+  p Pug Templates
+  
+    // Section where message is displayed 
+
+    br
+    p.alert.alert-success= message
+
+// Paragraphs Section
+.container
+  .row
+    .col-sm-4
+      h3 Paragraph I
+      p
+        | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    .col-sm-4
+      h3 Paragraph II
+      p
+        | Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    .col-sm-4
+      h3 Paragraph III
+      p
+        | Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
