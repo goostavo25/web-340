@@ -1,0 +1,96 @@
+<!--
+Title: index.ejs
+Author: W3Schools 
+Modified by: Gustavo Roo Gonzalez
+Date: 11 September 2021
+Description: Bootstrap for Exercise 5.2 EJS Templates
+Reference: https://www.w3schools.com/whatis/whatis_bootstrap.asp
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <!--Site Title/Links/Bootstrap-->
+
+  <head>
+    <title>Exercise 5.2</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+
+    <!--Site Header/Main content-->
+
+    <div class="jumbotron text-center">
+      <h1>Exercise 5.2</h1>
+      <p>EJS Templates</p>
+      
+      <!--Section where array is displayed-->
+      
+      <h2>Disney Characters List</h2>
+      <br  />
+      <% if(disney.length > 0) { %> 
+      
+          <% for (var k=0; k < disney.length; k++) { %>
+  
+              <% if (disney[k]=="Mickey"){ %>
+              <div class="alert alert-success" role="alert"><strong><%=disney[k]%></strong></div><% } %>
+          
+              <% if (disney[k]=="Minnie"){ %>
+              <div class="alert alert-info" role="alert"><strong><%=disney[k]%></strong></div><% } %>
+              
+              <% if (disney[k]=="Donald") { %>
+              <div class="alert alert-warning" role="alert"><strong><%=disney[k]%></strong></div><% } %>
+          
+              <% if (disney[k]=="Pluto") {%>
+              <div class="alert alert-danger" role="alert"><strong><%=disney[k]%></strong></div><% } %>
+              
+              <% if (disney[k]=="Goofy") { %>
+              <div class="alert alert-warning" role="alert"><strong><%=disney[k]%></strong></div><% } %>
+          
+              <% } %>            
+      <% } %>
+    
+      </div>
+    </div>
+
+    <!--Paragraphs Section-->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <h3>Paragraph I</h3>
+
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </div>
+        <div class="col-sm-4">
+          <h3>Paragraph II</h3>
+
+          <p>
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+            nisi ut aliquip ex ea commodo consequat.
+          </p>
+        </div>
+        <div class="col-sm-4">
+          <h3>Paragraph III</h3>
+
+          <p>
+            Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur.
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
