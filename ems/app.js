@@ -13,6 +13,21 @@ var express = require("express");
 var http = require("http");
 var path = require("path");
 var logger = require("morgan");
+var mongoose = require("mongoose");
+var Employee = require("./models/employee");
+var mongoDB = "mongodb+srv://admin:admin@buwebdev-cluster-1.umga8.mongodb.net/test";
+
+mongoose.connect(mongoDB, {});
+
+mongoose.Promise = global.Promise;
+
+var db = mongoose.connection;
+
+db.on("error", console.error.bind(console, "MongoDB connection error: "));
+
+db.once("open", function () {
+  console.log("Application connected to MongoDB instance");
+});
 
 // Assigning express object to app variable
 var app = express();
@@ -45,6 +60,12 @@ app.get("/new", function (request, response) {
   response.render("new", {
     title: "New Employee Page",
   });
+});
+
+// Creating employee model
+var employee = new Employee({
+  firstName: firstName,
+  lastName: lastName,
 });
 
 //Creates server to listen on port 8080
