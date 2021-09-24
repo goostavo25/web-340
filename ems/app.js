@@ -62,12 +62,6 @@ app.get("/new", function (request, response) {
   });
 });
 
-// Creating employee model
-var employee = new Employee({
-  firstName: firstName,
-  lastName: lastName,
-});
-
 //Creates server to listen on port 8080
 http.createServer(app).listen(8080, function () {
   console.log("Application started on port 8080!");
