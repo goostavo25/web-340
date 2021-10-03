@@ -1,8 +1,49 @@
 <!--
 =======================================================
-;  Title: views.ejs
+;  Title: view.ejs
 ;  Author: Gustavo Roo Gonzalez
-;  Date: 18 September 2021
-;  Description: Views Page for EMS
+;  Date: 03 October 2021
+;  Description: View Page for EMS
 =======================================================
 -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <!--Site Header Module-->
+  <head>
+    <%- include('header'); -%>
+  </head>
+    
+  <body>
+    <!--Navigation Bar-->
+    <%- include('navbar'); -%>
+    
+   <!--Main Content-->
+   <main role="main" class="container">
+    <div class="jumbotron text-center">
+       <h1>New Employee Page</h1>
+       <p>EMS (Milestone 4): MongoDB Integration</p>
+    </div>
+  
+    <!--Text Section-->
+    <div class="container">
+        <h2>--Employee Record--</h2>
+        <div>
+            <div class="form-group">
+                <label for="txtFirstName">First Name:</label>
+                <input type="text" class="form-control" id="txtName" value="<%= employee[0].firstName %>" name="txtFirstName" /><br>
+                <label for="txtLastName">Last Name:</label>
+                <input type="text" class="form-control" id="txtLastName" value="<%= employee[0].lastName %>" name="txtLastName" />
+            </div>
+        </div>
+  </div>
+  </main>
+    
+  </body>
+  
+<!--Site Footer Module-->
+</div>
+<%- include ('footer'); -%>
+</div>
+</html>

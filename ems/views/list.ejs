@@ -1,14 +1,18 @@
 <!--
-=======================================================
-;  Title: lists.ejs
-;  Author: Gustavo Roo Gonzalez
-;  Date: 18 September 2021
-;  Description: Lists Page for EMS
-=======================================================
+==================================================================
+;  Title: list.ejs
+;  Author: W3Schools 
+;  Modified by: Gustavo Roo Gonzalez
+;  Date: 03 October 2021
+;  Description: List Page for EMS
+;  Reference: https://www.w3schools.com/whatis/whatis_bootstrap.asp
+;             https://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/
+===================================================================
 -->
 
 <!DOCTYPE html>
 <html lang="en">
+
 
   <!-- Header Module -->
   <head>
@@ -16,23 +20,48 @@
   </head>
     
   <body>
-
     <!--Navigation Bar Module-->
     <%- include('navbar'); -%>
     
     <!--Main Content-->
-    <main role="main" class="container">
+     <main role="main" class="container">
       <div class="jumbotron text-center">
-         <h1>List Page</h1>
-         <p>EMS (Milestone 2): User Interface Submission</p>
+         <h1>Exercise 8.4</h1>
+         <p>EMS (Milestone 4): MongoDB Integration</p>
       </div>
     
       <!--Text Section-->
-      <div>
-         <h2 class="mt-5 text-center">Main Text of List Page</h2>
-         <p class="lead">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-       <br  />
-      </div>
+      <div role="main" class="container">
+        <br/><br/>
+    
+        <% if (employees.length) { %>
+            <h2>Employee Listing</h2><br />
+            <!-- Add link to add new employee -->
+            <a href="/new">Add New</a>
+            <!-- Create table to show current employees. -->
+            <table class="table table‐hover">
+                <thead class="thead‐dark">
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% employees.forEach(function (entry) { %>
+                    <tr>
+                        <td><%= entry.firstName %></td>
+                        <td><%= entry.lastName %></td>
+                        <td><a href="/view/<%= entry.firstName %>">VIEW</a></td>
+                    </tr>
+                    <% }) %>
+                </tbody>                
+            </table>
+        <!-- No entries, go to add new page. -->
+        <% } else { %>
+            No entries! <a href="/new">Add one!</a>
+        <% } %>
+    
+        <br/>
     </main>
     
   </body>
