@@ -20,21 +20,11 @@ const cookieParser = require("cookie-parser");
 const csrf = require("csurf");
 var Employee = require("./models/employee");
 
-//MongoDB Connection Module
-var mongoDB = "mongodb+srv://admin:admin@buwebdev-cluster-1.umga8.mongodb.net/test";
-mongoose.connect(mongoDB, {});
-mongoose.Promise = global.Promise;
-var db = mongoose.connection;
-db.on("error", console.error.bind(console, "MongoDB connection error: "));
-db.once("open", function () {
-  console.log("Application connected to MongoDB instance");
-});
+// Initialize express
+var app = express();
 
 // Setup csurf protection
 var csrfProtection = csrf({ cookie: true });
-
-// Initialize express
-var app = express();
 
 //Telling express to look in the views folder for files.
 app.set("views", path.resolve(__dirname, "views"));
@@ -59,15 +49,15 @@ app.use(function (request, response, next) {
   next();
 });
 
-//Get function
+//ROuting to home page
 app.get("/", function (request, response) {
   response.render("index", {
-    message: "XSS Prevention Example",
     title: "Home page",
+    message: "Employee Database",
   });
 });
 
-//Get request for the new employee page
+//Routing to new employee page
 app.get("/new", function (request, response) {
   response.render("new", {
     title: "New",
@@ -75,25 +65,38 @@ app.get("/new", function (request, response) {
   });
 });
 
-//Process request
+//Routing to list page
+app.get("/list", function (request, response) {
+  Employee.find({}, function (error, employees) {
+    if (error) throw error;
+    res.render("list", {
+      title: "Employee List",
+      employees: employees,
+    });
+  });
+});
+
+app.get("/", function (request, response) {
+  response.render("index", {
+    title: "XSS Prevention Example",
+  });
+});
+
+//Process Request
 app.post("/process", function (request, response) {
-  console.log(request.body);
-  if (!request.body.firstName) {
-    response.status(404).send("Entries must have a name.");
+  if (!request.body.txtFirstName || !request.body.txtLastName) {
+    response.status(400).send("Entries must have both names filled out.");
     return;
   }
 
-  if (!request.body.lastName) {
-    response.status(404).send("You must have a last name.");
-    return;
-  }
+  //Data from form
+  const firstName = request.body.txtFirstName;
+  const lastName = request.body.txtLastName;
+  console.log(firstName);
+  console.log(lastName);
 
-  //Get request form data
-  const firstName = request.body.firstName;
-  const lastName = request.body.lastName;
-
-  //Create Employee Model
-  var employee = new Employee({
+  // Creates Employee Model
+  let employee = new Employee({
     firstName: firstName,
     lastName: lastName,
   });
@@ -104,21 +107,20 @@ app.post("/process", function (request, response) {
       console.log(error);
       throw error;
     } else {
-      console.log(firstName + lastName + "Your entry was successfully saved!");
+      console.log(firstName + " " + lastName + " Your entry was successfully saved!");
       res.redirect("/");
     }
   });
 });
 
-//Get request for the list page
-app.get("/list", function (request, response) {
-  Employee.find({}, function (error, employees) {
-    if (error) throw error;
-    res.render("list", {
-      title: "Employee List",
-      employees: employees,
-    });
-  });
+//MongoDB Connection Module
+var mongoDB = "mongodb+srv://admin:admin@buwebdev-cluster-1.umga8.mongodb.net/test";
+mongoose.connect(mongoDB, {});
+mongoose.Promise = global.Promise;
+var db = mongoose.connection;
+db.on("error", console.error.bind(console, "MongoDB connection error: "));
+db.once("open", function () {
+  console.log("Application connected to MongoDB instance");
 });
 
 //Creates server to listen on port 8080

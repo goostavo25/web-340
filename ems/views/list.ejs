@@ -51,16 +51,15 @@
                     <tr>
                         <td><%= entry.firstName %></td>
                         <td><%= entry.lastName %></td>
-                        <td><a href="/view/<%= entry.firstName %>">VIEW</a></td>
                     </tr>
                     <% }) %>
                 </tbody>                
             </table>
         <!-- No entries, go to add new page. -->
         <% } else { %>
-            No entries! <a href="/new">Add one!</a>
+            No entries! <a href="/new">Add an employee!</a>
         <% } %>
-    
+        <a href="/">Return Home</a>
         <br/>
     </main>
     
@@ -69,5 +68,7 @@
 <!--Site Footer Module-->
 </div>
 <%- include ('footer'); -%>
+<% include ('scripts') %>
+
 </div>
 </html>

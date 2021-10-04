@@ -31,12 +31,12 @@
       <h2 class="text-primary"><%= message %></h2>
       <form method="post" action="/process">
           <div class="form-group">
-              <label for="firstName">First Name:</label>
-              <input name="firstName" type="text" id="firstName" name="firstName">
+              <label for="txtFirstName">First Name:</label>
+              <input name="txtFirstName" type="text" id="txtFirstName" name="txtFirstName">
           </div>
           <div class="form-group">
-              <label for="lasttName">Last Name:</label>
-              <input name="lastName" type="text" id="lastName" name="lastName">
+              <label for="txtLasttName">Last Name:</label>
+              <input name="txtLastName" type="text" id="txtLastName" name="txtLastName">
           </div>
           <div class="form-group">   
 
@@ -46,6 +46,8 @@
           </div>
       </form>
   </div>
+  <a href="/">Return</a>
+
   </main>
     
   </body>
@@ -53,5 +55,7 @@
 <!--Site Footer Module-->
 </div>
 <%- include ('footer'); -%>
+<% include ('scripts') %>
+
 </div>
 </html>
