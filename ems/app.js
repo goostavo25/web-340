@@ -69,7 +69,7 @@ app.get("/new", function (request, response) {
 app.get("/list", function (request, response) {
   Employee.find({}, function (error, employees) {
     if (error) throw error;
-    res.render("list", {
+    response.render("list", {
       title: "Employee List",
       employees: employees,
     });
@@ -103,14 +103,10 @@ app.post("/process", function (request, response) {
 
   //Save
   employee.save(function (error) {
-    if (error) {
-      console.log(error);
-      throw error;
-    } else {
-      console.log(firstName + " " + lastName + " Your entry was successfully saved!");
-      res.redirect("/");
-    }
+    if (error) throw error;
+    console.log(firstName + " " + lastName + " Your entry was successfully saved!");
   });
+  response.redirect("/");
 });
 
 //MongoDB Connection Module
