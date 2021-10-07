@@ -109,6 +109,22 @@ app.post("/process", function (request, response) {
   response.redirect("/");
 });
 
+//Display Employee Record
+app.get("/view/:queryName", function (request, response) {
+  var queryName = request.params.queryName;
+  Employee.find({ firstName: queryName }, function (error, employees) {
+    if (error) throw error;
+    if (employees.length > 0) {
+      response.render("view", {
+        title: "Employee Record",
+        employee: employees,
+      });
+    } else {
+      response.redirect("/list");
+    }
+  });
+});
+
 //MongoDB Connection Module
 var mongoDB = "mongodb+srv://admin:admin@buwebdev-cluster-1.umga8.mongodb.net/test";
 mongoose.connect(mongoDB, {});
