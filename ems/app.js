@@ -32,6 +32,9 @@ app.set("views", path.resolve(__dirname, "views"));
 //Telling express to use the ejs view engine
 app.set("view engine", "ejs");
 
+//Setting Port
+app.set("port", process.env.PORT || 8080);
+
 //Use Statements
 app.use(logger("dev"));
 app.use(helmet.xssFilter());
@@ -136,6 +139,6 @@ db.once("open", function () {
 });
 
 //Creates server to listen on port 8080
-http.createServer(app).listen(8080, function () {
-  console.log("Application started on port 8080!");
+http.createServer(app).listen(app.get("port"), function () {
+  console.log("Application started on port" + app.get("port"));
 });
